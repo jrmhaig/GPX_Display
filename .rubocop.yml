@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - db/**/*
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+
+Style/Documentation:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': '()'
+    '%i': '()'

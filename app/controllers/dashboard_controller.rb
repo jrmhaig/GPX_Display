@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class DashboardController < ApplicationController
   def index
-    @user = User.find(session['user_id']) if session['user_id']
+    @user = User.find(session[:user_id]) if session[:user_id]
   end
 
   def authenticate
     user = User.find_by_username(user_params[:username])
     if user && user.authenticate(user_params[:password])
-      authorised = true
       session[:user_id] = user.id
     else
       session[:user_id] = nil
@@ -15,7 +16,7 @@ class DashboardController < ApplicationController
   end
 
   def logout
-    session[:'user_id'] = nil
+    session[:user_id] = nil
     redirect_to '/'
   end
 

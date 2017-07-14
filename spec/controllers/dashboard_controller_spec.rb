@@ -1,43 +1,44 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe DashboardController, type: :controller do
-
-  let(:valid_user_params) {
+  let(:valid_user_params) do
     {
       username: 'Test user',
       password: 'passw0rd'
     }
-  }
+  end
 
-  let(:invalid_user_params) {
+  let(:invalid_user_params) do
     {
       username: 'Invalid user',
       password: 'boo'
     }
-  }
+  end
 
-  let(:valid_user_wrong_password_params) {
+  let(:valid_user_wrong_password_params) do
     {
       username: 'Test user',
       password: 'passw1rd'
     }
-  }
+  end
 
-  let(:valid_user) {
+  let(:valid_user) do
     User.create(
       username: valid_user_params[:username],
       email: 'test@example.com',
       password: valid_user_params[:password],
-      password_confirmation: valid_user_params[:password],
+      password_confirmation: valid_user_params[:password]
     )
-  }
+  end
 
   before(:each) do
     valid_user
   end
 
-  describe "GET #index" do
-    it "returns http success" do
+  describe 'GET #index' do
+    it 'returns http success' do
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -55,7 +56,7 @@ RSpec.describe DashboardController, type: :controller do
     end
   end
 
-  describe "POST #authenticate" do
+  describe 'POST #authenticate' do
     it 'redirects to :index' do
       post :authenticate, params: valid_user_params
       expect(response).to redirect_to('/')

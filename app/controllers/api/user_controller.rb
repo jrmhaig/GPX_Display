@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class UserController < ApplicationController
     def authenticate
